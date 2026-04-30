@@ -10,7 +10,6 @@ name=$(cat $work_dir/bin/ddevice/name_devices.txt)
 base_rom_code=$(cat $work_dir/bin/ddevice/base_rom_code.txt)
 rom_os=$(cat $work_dir/bin/ddevice/rom_os.txt)
 starxVER=$(cat $work_dir/Version)
-username=$(cat $work_dir/BuildUser)
 systemtype=$(cat $work_dir/bin/ddevice/fstype.txt)
 
 if grep -q "ro.build.ab_update=true" build/baserom/images/vendor/build.prop; then
@@ -35,8 +34,6 @@ echo "$starxVER" > $work_dir/bin/script2flash/META-INF/Data/Version
 echo "$regionTYPE" > $work_dir/bin/script2flash/META-INF/Data/Region
 echo "$name" > $work_dir/bin/script2flash/META-INF/Data/DeviceName
 echo "$systemtype" > $work_dir/bin/script2flash/META-INF/Data/Types
-sed -i "s|codename|$device_code|g" $work_dir/README.md
-sed -i "s|basedc|$base_rom_code|g" $work_dir/README.md
 
 
 echo "------------------Nothings BuildInfo ---------------------"
@@ -44,7 +41,6 @@ echo "- Device Name:"$name""
 echo "- Codename:"$device_code""
 echo "- Xiaomi Version:"$rom_os""  
 echo "- BuildRegion:"$regionTYPE""
-echo "- Build Username:"$username""
 echo "- Android:"$AndroidVer""                                      
 echo "- Xiaomi Version:"$base_rom_code""                                                                        
 echo "- BuildTool Version:"$starxVER""
